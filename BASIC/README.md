@@ -81,4 +81,33 @@ React는 이를 통일하여 일관성 있는 이벤트 처리 방식을 제공�
 
 > **Cross Browsing Issue**  
 > 브라우저마다 스펙이 달라 발생하는 호환성 문제를 의미 ▶️ 이 문제를 해결하는 것이 바로 React에서의 합성 이벤트!  
-> **즉, 모든 브라우저에서 사용할 수 있는 통합된 규격의 이벤트 객체**
+> **즉, 모든 브라우저에서 사용할 수 있는 통합된 규격의 이벤트 객체**  
+
+<br>
+<hr>
+
+### State  
+React에서 State는 component의 현재 상태를 보관하는 변수를 의미  
+State의 값에 따라 렌더링되는 UI가 결정된다.  
+변화하는 가변적인 값을 관리할 때, 그런 값을 렌더링해주고 싶다면 State를 이용해서 처리!  
+<br>
+
+#### Re-Render / Re-Rendering
+component가 다시 렌더링되는 상황  
+**<U>※ state값이 변경되면 해당 component는 다시 reRendering 되는 것</U>**
+
+<img src="./img/state1.png" width="45%"> <img src="./img/state2.png" width="45%">
+
+<li><b>첫 번째 요소(0)</b> : 새롭게 생긴 state의 값, 즉 초기값을 의미 <code>(const [count, setCount] = useState(0);)</code></li>
+<li><b>두 번째 요소(1)</b> : state의 값을 변경하는 함수, <code><b>상태 변화 함수</b></code>라고 부름</li>
+<br>
+<span style="color:red; text-decoration: underline; text-decoration-color: red; font-weight:bold;">
+자신이 갖는 state값이 변경되지 않아도 부모로부터 받은 props값이 바뀌게 되면 reRendering된다.
+</span>
+
+<br>
+
+#### ReRendering되는 경우 3가지
+1. state값이 변경되었을 때
+2. 자신이 제공받는 props의 값이 변경되었을 때
+3. 부모 component가 reRendering될 때, 자식 component도 reRendering
