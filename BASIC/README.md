@@ -101,9 +101,8 @@ component가 다시 렌더링되는 상황
 <li><b>첫 번째 요소(0)</b> : 새롭게 생긴 state의 값, 즉 초기값을 의미 <code>(const [count, setCount] = useState(0);)</code></li>
 <li><b>두 번째 요소(1)</b> : state의 값을 변경하는 함수, <code><b>상태 변화 함수</b></code>라고 부름</li>
 <br>
-<span style="color:red; text-decoration: underline; text-decoration-color: red; font-weight:bold;">
-자신이 갖는 state값이 변경되지 않아도 부모로부터 받은 props값이 바뀌게 되면 reRendering된다.
-</span>
+
+**자신이 갖는 state값이 변경되지 않아도 부모로부터 받은 props값이 바뀌게 되면 reRendering된다.**
 
 <br>
 
