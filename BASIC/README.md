@@ -126,8 +126,96 @@ const refObject = useRef()
 
 useRef를 이용하면 component가 렌더링하는 특정 DOM 요소에 접근할 수 있다. 그럼으로써 해당 요소를 조작하는 것도 가능하다.
 
-<img src="./img/useRef1.png" width="45%"> <img src="./img/useRef2.png" width="45%">
+<table>
+<tr>
+<td><img src="./img/useRef1.png" height="200px"></td>
+<td><img src="./img/useRef2.png" height="200px"></td>
+</tr>
+</table>
+
 
 <li><b>Left</b> : current라는 property에 보관할 값을 담아두기만 하는 단순한 js 객체</li>
 <li><b>Right</b> : 100이라는 초기값으로 설정한 후 생성한 reference 객체</li>
 <br>
+<hr>
+
+### React Hooks
+클래스 component의 기능을 함수 component에서도 이용할 수 있도록 도와주는 메소드를 의미  
+이름 앞에 use 접두사가 붙음 / 각각의 메소드는 Hook이라고 부름  
+> useState, useRef 모두 React Hooks이었음..!  
+> <li><b>useState</b> : State 기능을 낚아채오는 Hook</li>
+> <li><b>useRef</b> : Reference 기능을 낚아채오는 Hook</li>
+<br>
+
+#### 3가지 Hook 관련 TIP ⭐️
+1. 함수 component 내부에서만 호출 가능
+2. 조건문, 반복문 내부에서는 호출 불가
+3. 나만의 Hook도 제작 가능 (Custom Hook)
+
+<br>
+
+**1번: 함수 component 내부에서만 호출 가능** <br>
+```
+import { useState } from "react";
+
+const state = useState();
+
+const HookExam = () => {
+    return <div>hookexam</div>;
+};
+
+export default HookExam;
+```
+> **Error: Invalid hook call. Hooks can only be called inside of the body of a function component.**  
+> useState와 같은 hook을 사용할 때는 반드시 component 내부에서만 호출해야한다는 점!
+
+```
+import { useState } from "react";
+
+const HookExam = () => {
+  const state = useState();
+
+    return <div>hookexam</div>;
+};
+
+export default HookExam;
+```
+<br>
+
+**2번: 조건문, 반복문 내부에서는 호출 불가** <br>
+```
+// 아래 두 케이스 모두 ❌
+if(true) {
+    const state = useState();
+}
+
+for(;;) {
+    const state = useState();
+}
+```
+<br>
+
+**3번: 나만의 Hook도 제작 가능 (Custom Hook)** <br>
+```
+function useInput() {
+    const [input, setInput] = useState("");
+
+    const onChange = (e) => {
+        setInput(e.target.value);
+    };
+
+    return [input, onChange];
+}
+
+const HookExam = () => {
+    const [input, onChange] = useInput();
+
+    return <div>
+        <input value={input} onChange={onChange}></input>
+    </div>;
+};
+```
+> 여기서 함수 이름을 <code>useInput</code>이 아니라 <code>getInput</code>으로 설정했으면 1번에 의해서 오류가 발생한다.  
+> 접두사로 use를 붙여주면 react에서 Hook이라고 인식하기 때문에 사용가능하다.  
+
+<u>보통 hook같은 경우는 src 아래의 hooks이라는 directory를 따로 만들어서 사용한다.</u>
