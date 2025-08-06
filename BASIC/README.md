@@ -110,3 +110,24 @@ component가 다시 렌더링되는 상황
 1. state값이 변경되었을 때
 2. 자신이 제공받는 props의 값이 변경되었을 때
 3. 부모 component가 reRendering될 때, 자식 component도 reRendering
+
+<br>
+<hr>
+
+### useRef
+새로운 Reference 객체를 생성하는 기능
+```
+const refObject = useRef()
+```
+<br>
+
+> **useRef와 useState의 차이점**  
+> useState는 값이 변경되면 component가 reRendering이 발생하지만, useRef는 어떤 경우에도 reRendering을 유발하지 않는다는 차이점이 있다.  
+
+useRef를 이용하면 component가 렌더링하는 특정 DOM 요소에 접근할 수 있다. 그럼으로써 해당 요소를 조작하는 것도 가능하다.
+
+<img src="./img/useRef1.png" width="45%"> <img src="./img/useRef2.png" width="45%">
+
+<li><b>Left</b> : current라는 property에 보관할 값을 담아두기만 하는 단순한 js 객체</li>
+<li><b>Right</b> : 100이라는 초기값으로 설정한 후 생성한 reference 객체</li>
+<br>
