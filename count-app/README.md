@@ -1,12 +1,20 @@
-# React + Vite
+## Counter App
+### 결과물
+![결과물](./img/result.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### State Lifting (State 끌어올리기)
+이런 계층 구조상에서, 위로 올려서 그 아래의 component들이 모두 공유할 수 있도록 만드는 방법을 의미
+![정리](./img/img1.png)
 
-Currently, two official plugins are available:
+React에서 화면을 구성할 때, 여러 개의 component들이 **부모-자식 관계**를 이루며 계층 관계를 이룬다.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+특정 component가 다른 component에게 data를 전달하려면, <U><b>반드시 두 component는 부모-자식 관계를 가져야한다.</b></U>  
 
-## Expanding the ESLint configuration
+React에서는 props라는 기능을 이용해 부모에서 자식 방향으로만 데이터를 전달할 수 있다.  
+그렇기 때문에 데이터는 위에서 아래로 즉, 한 가지 방향으로 흐르게 된다.(= 단방향 데이터 흐름)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+그렇기 때문에, 하나의 state를 여러 component에서 관리하게 될 경우 <U><b>state는 여러 component들의 공통 부모가 되는 곳에 만들어야 한다.</b></U>
+
+<br><br>
+
+**따라서, 우리는 데이터의 원천인 state를 어떤 component에 위치시킬 것인지 항상 잘 고민하고 고려해서 결정해야 한다‼️**
