@@ -49,8 +49,8 @@ React Component의 `side effect` 를 제어하는 새로운 React Hook
 <br>
 
 ### CleanUp Function (정리 함수)
-useEffect의 callback 함수가 반환하는 함수를 "cleanup" 또는 "정리 함수"라고 한다.
-이 정리함수는 useEffect가 끝날 때 실행된다.
+useEffect의 callback 함수가 반환하는 함수를 "cleanup" 또는 "정리 함수"라고 한다.  
+이 정리함수는 useEffect가 끝날 때 실행된다.  
 주로 component가 사라질 때(UnMount)나 effect가 다시 실행되기 전에 이전 effect가 남긴 것을 정리하는데 쓰인다.
 ```
 useEffect(() => {
