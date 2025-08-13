@@ -1,0 +1,41 @@
+import { memo } from "react";
+import "./TodoItem.css";
+
+const TodoItem = ({id, isDone, content, date, onUpdate, onDelete}) => {
+
+    const onChangeCheckbox = () => {
+        onUpdate(id);
+    };
+
+    const onClickDeleteButton = () => {
+        onDelete(id);
+    };
+
+    return (
+        <div className="TodoItem">
+            <input
+                onChange={onChangeCheckbox}
+                checked={isDone}
+                type="checkbox" />
+            <div className="content">{content}</div>
+            <div className="date">{new Date(date).toLocaleDateString()}</div>
+            <button onClick={onClickDeleteButton}>삭제</button>
+        </div>
+    );
+};
+
+// // 고차 component (HOC; High Order Component)
+// export default memo(TodoItem, (prevProps, nextProps) => {
+//     // 반환값에 따라, Props가 바뀌었는지 바뀌지 않았는지 판단(기본적으로 얕은 비교로 판단)
+//     // True → Props 바뀌지 않음 → Rerendering ❌
+//     // False → Props 바뀜 → Rerendering ⭕️
+
+//     if(prevProps.id !== nextProps.id) return false;
+//     if(prevProps.isDone !== nextProps.isDone) return false;
+//     if(prevProps.content !== nextProps.content) return false;
+//     if(prevProps.date !== nextProps.date) return false;
+
+//     return true;
+// });
+
+export default memo(TodoItem);
