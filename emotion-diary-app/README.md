@@ -56,3 +56,18 @@ export default Home;
 #### Link VS useNavigate
 link가 필요할 때는 Link Component를 사용  
 event handler안에서 특정 조건에 따라 페이지를 이동시켜야한다면 useNavigate 사용
+
+
+### Web Storage
+웹 브라우저 내장 DB
+<br>
+
+#### SessionStorage
+- 브라우저 탭 별로 데이터를 보관
+- 탭이 종료되기 전에는 데이터 유지(새로고침)
+- 탭이 종료되거나 꺼지면 데이터 삭제
+
+
+#### LocalStorage
+- 사이트 주소별로 데이터 보관
+- 사용자가 직접 삭제하기 전까지 데이터 보관
